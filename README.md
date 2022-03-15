@@ -7,6 +7,7 @@ Made with Python using Pygame library.
 - main menu
 - difficulty settings (easy, normal, hard, insane)
 - responsive design
+- remaining hearts as heart icons
 - (more to come...)
 
 # Screenshots
