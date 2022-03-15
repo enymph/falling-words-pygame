@@ -34,10 +34,10 @@ def game():
     FPS = 60
     y1 = -100
 
-    HEALTH = 1
+    HEALTH = 3
     HEALTH_LEFT = HEALTH
 
-    end = 2
+    end = 25
 
     random_words = []
     words = []
@@ -47,7 +47,8 @@ def game():
     with open('assets/wordlist.txt', 'r') as f:
 
         words = f.readlines()
-        words = [word.strip() for word in words]
+        words = [word.strip() for word in words if len(word.strip()) > 5]
+        # words = [word.strip() for word in words]
 
         while i != total_words:
 
