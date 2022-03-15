@@ -11,20 +11,6 @@ random_sound = 0
 
 def game():
 
-    # musics = []
-
-    # for filename in os.scandir("Assets/musics"):
-    #     if filename.is_file():
-    #         musics.append(filename.path)
-
-    # print(musics)
-    # pygame.mixer.Sound(musics[randint(0, len(musics)-1)]).play()
-
-    # loop the musics
-    # while True:
-    #     for music in musics:
-    #         pygame.mixer.Sound(music).play()
-
     keyboard_sound = pygame.mixer.Sound('Assets/sounds/keyboard.wav')
     fail_sound = pygame.mixer.Sound('Assets/sounds/fail.wav')
     success_sound = pygame.mixer.Sound('Assets/sounds/success.wav')
@@ -47,7 +33,8 @@ def game():
     with open('assets/wordlist.txt', 'r') as f:
 
         words = f.readlines()
-        words = [word.strip() for word in words if len(word.strip()) > 5]
+        words = [word.strip() for word in words if len(
+            word.strip()) > 5 and len(word.strip()) < 12]
         # words = [word.strip() for word in words]
 
         while i != total_words:
@@ -204,7 +191,6 @@ def game():
         if random_word == user_input and event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
                 y = 0
-                # print("31")
                 user_input = ''
                 random_word = random_words[-total_words]
                 total_words -= 1
@@ -219,7 +205,6 @@ def game():
                 success_sound.play()
 
             if (total_words-HEALTH_LEFT) % 5 == 0 and total_words-HEALTH_LEFT < end:
-                # print(total_words-HEALTH_LEFT)
                 arrow = pygame.transform.scale(
                     arrow, (int(X/10), int(Y/10)))
                 speed = increase_speed(speed)
@@ -267,8 +252,6 @@ i = 0
 musics = []
 
 
-# print(len(musics), "= len_musics")
-
 for filename in os.scandir("Assets/musics"):
     if filename.is_file():
         musics.append(filename.path)
@@ -286,10 +269,6 @@ def play_music():
     pygame.mixer.set_num_channels(2)
 
     voice = pygame.mixer.Channel(0)
-
-    # print(random_nums)
-    # print(i)
-    # print(musics)
 
     if not voice.get_busy():
 
